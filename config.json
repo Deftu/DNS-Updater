@@ -1,0 +1,14 @@
+{
+    "apiKey": "",
+    "domains": [
+        {
+            "names": [
+                ""
+            ],
+            "zoneId": ""
+        }
+    ],
+    "discord": {
+        "webhookUrl": ""
+    }
+}
