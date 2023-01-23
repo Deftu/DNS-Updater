@@ -24,7 +24,7 @@ async function execute() {
                 if (record.content !== ip) {
                     console.log(`Updating ${name} to ${ip}`);
                     await updateDnsRecord(domain.zoneId, record.id, record);
-                    await sendEmbed(`DNS Update - ${record.name}`, `The IP address for **${name}** has changed to **${ip}**.`);
+                    await sendEmbed(`DNS Update - ${record.name}`, `The IP address for **${name}** has changed from **${lastIp}** to **${ip}**.`);
                 }
             } else {
                 console.log(`Could not find record for ${name}`);
