@@ -19,7 +19,7 @@ export async function makeRequest(path: string, options?: AxiosRequestConfig | u
         const response = await axios(`${baseUrl}${path}`, {
             ...options,
             headers: {
-                "Authorization": `Bearer ${config.apiKey}`,
+                "Authorization": `Bearer ${config.apiToken}`,
                 "Content-Type": "application/json"
             }
         });
@@ -35,6 +35,21 @@ export type Zone = {
     content: string;
     type: string;
     ttl: number;
+}
+
+export async function getZoneId(domain: string): Promise<string | null> {
+    try {
+        const response = await makeRequest(`/zones?name=${domain}&status=active`);
+        const zones = response.result as Zone[];
+        if (zones.length > 0) {
+            return zones[0].id;
+        } else {
+            return null;
+        }
+    } catch (e) {
+        console.error(e);
+        return null;
+    }
 }
 
 export async function getDnsRecords(zoneId: string): Promise<Zone[]> {

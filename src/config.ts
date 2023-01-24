@@ -5,25 +5,25 @@ require("dotenv").config();
 import * as fs from "fs";
 
 export type Domain = {
-    names: string[];
-    zoneId: string;
+    name: string;
+    recordNames: string[];
 }
 
 export type Discord = {
-    webhookUrl: string;
+    url: string;
 }
 
 type Config = {
-    apiKey: string;
+    apiToken: string;
     domains: Domain[];
     discord: Discord;
 };
 
 const defaultConfig: Config = {
-    apiKey: process.env.CLOUDFLARE_API_KEY || "",
+    apiToken: process.env.CLOUDFLARE_API_KEY || "",
     domains: [],
     discord: {
-        webhookUrl: process.env.DISCORD_WEBHOOK_URL || ""
+        url: process.env.DISCORD_WEBHOOK_URL || ""
     }
 };
 

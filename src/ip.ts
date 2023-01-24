@@ -3,7 +3,7 @@ import fs from "fs";
 const regex = /(\d{1,3}\.){3}\d{1,3}/;
 
 export async function getIp(): Promise<string | null> {
-    const response = await axios.get("https://api.ipify.org");
+    const response = await axios.get("https://checkip.amazonaws.com");
     const value = response.data;
     if (regex.test(value)) {
         return value;
